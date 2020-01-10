@@ -8,13 +8,17 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: pink;
 			font-size: 300%;
 			text-align: center;
 			display: block;
 			position: absolute;
 			top: 100px;
 			left: 300px;
+		}
+		
+		body {
+			background-image: url("http://troctribu.info/wp-content/uploads/2019/04/red-velvet-curtains-background-deep-red-curtains-dark-red-curtains-spooky-ghost-haunted-background-curtain-loop-stock-footage-video-velvet-deep-red-curtains-home-decorators-collection-cabinets.jpg");
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -58,10 +62,10 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
+			
 			var positionX = 0;
 			var points = 0;
 			var speed = 10;
-
 			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -71,7 +75,13 @@
 			function update(newPositionX) {
 				positionX = positionX + speed;
 				moveBoxTo(positionX);
-			};
+				if (positionX > boardWidth) {
+					speed = -100;
+				} 
+			if (positionX < 0) {
+					speed = 100;
+				}
+			}
 
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
@@ -83,7 +93,7 @@
 				changeBoxText(points);
 				points = points + 1;
 				speed = speed + 3;
-			};
+			}
 		})();
 	</script>
 </body>
